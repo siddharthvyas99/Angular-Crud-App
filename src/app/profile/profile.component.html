@@ -1,0 +1,295 @@
+<h2 style="text-align: center;margin:40px 0px 60px 0px">Hello {{this.det1.FirstName}} </h2>
+<h2 style="text-align: center;margin:40px 0px 60px 0px">Edit your profile </h2>
+<button style="position:absolute;right:90px;top:20px" (click)="logout()" class="btn btn-danger">Logout</button>
+
+<div style="margin-bottom:50px" class="container">
+  <div class="row">
+    <div class="col">
+      <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+          <li class="nav-item " [ngClass]="!isProfileEditactiveLink ? 'active' : '' ">
+            <a class="nav-link" (click)="sendDash()">Profile Info</a>
+          </li>
+          <li class="nav-item" [ngClass]="isProfileEditactiveLink ? 'active' : '' ">
+            <a class="nav-link" routerLinkActive="active">Profile Edit</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+<div class="container" >
+   <div class="row">
+     <div class="col"><h3 style="font-size: 24px">Full Name :</h3></div>
+     <div class="col"><h4>{{ddet.obj.FirstName}} {{ddet.obj.LastName}}</h4></div>
+   </div>             
+  <div class="row">
+    <div class="col"><h3>Email :</h3></div>
+    <div class="col"><h4>{{ddet.obj.Email}}</h4></div>
+  </div>
+   <!-- <div class="row">
+     <div class="col"><h3>Address->Street :</h3></div>
+     <div class="col"><h4>{{ddet.obj.address.street}}</h4></div>
+   </div>
+  <div class="row">
+    <div class="col"><h3>Address->Zip :</h3></div>
+    <div class="col"><h4> {{ddet.obj.address.zip}}</h4></div>
+  </div> -->
+  <div *ngFor="let add of ddet.obj.addresses;let i=index">
+      <div class="row">
+        <div class="col">
+          <h3>Address {{i+1}}</h3>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col"><h3>Street :</h3></div>
+       <div class="col"><h4>{{add.street}}</h4></div>
+      </div>
+    <div class="row">
+      <div class="col"><h3>Zip :</h3></div>
+      <div class="col"><h4> {{add.postcode}}</h4></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50px">
+  <button (click)="showModal(ddet.obj)" class="btn btn-primary">Edit Profile</button>
+  <button style="margin-left:50px" (click)="showCModal()" class="btn btn-primary">Change Password</button>
+</div>
+</div>
+
+
+
+<nz-modal nzWidth="60%" [(nzVisible)]="isVisible" nzTitle="Update Details" [nzFooter]="footerTemplate" (nzOnCancel)="handleCancel()" >
+  
+  <div>
+    <form nz-form [formGroup]="userform" (ngSubmit)="submitForm(userform.value)">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="FirstName" nzRequired>
+          <span>
+            First Name 
+          </span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nzSize="large" nz-input id="FirstName" type="text" formControlName="FirstName" />
+          <nz-form-explain *ngIf="userform.get('FirstName')?.dirty && userform.get('FirstName')?.errors"
+            >Please input your first name!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="LastName" nzRequired>
+          <span>
+            Last Name
+          </span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nzSize="large" nz-input id="LastName" type="text" formControlName="LastName" />
+          <nz-form-explain *ngIf="userform.get('LastName')?.dirty && userform.get('LastName')?.errors"
+            >Please input your LastName!</nz-form-explain
+          >
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24"  nzRequired>E-mail</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24"  nzHasFeedback>
+          <input nzSize="large" nz-input formControlName="Email" placeholder="email" type="email" readonly="readonly" />
+          <nz-form-explain *ngIf="userform.get('Email')?.dirty && userform.get('Email')?.errors">
+            <span *ngIf="userform.get('Email')?.hasError('Email')">
+              The input is not valid E-mail!
+            </span>
+            <span *ngIf="userform.get('Email')?.hasError('required')">
+              Please input your E-mail!
+            </span>
+          </nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      
+      <!-- <div formGroupName="address">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired>
+            <span>
+              Address
+            </span>
+          </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input nzSize="large" nz-input type="text" id="street"type="text" formControlName="street" />
+            <nz-form-explain *ngIf="userform.get('street')?.dirty && userform.get('street')?.errors"
+              >Please input your street name!</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+  
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="zip" nzRequired>
+            <span>
+              Zip 
+            </span>
+          </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input nzSize="large" nz-input id="zip" type="text" formControlName="zip" />
+            <nz-form-explain *ngIf="userform.get('zip')?.dirty && userform.get('zip')?.errors"
+              >Please input your zip code!</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+      </div> -->
+
+
+
+      <div formArrayName="addresses">
+          <div *ngFor="let address of userform.controls.addresses.controls; let i=index">
+              <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="address" nzRequired> -->
+                <div>  
+                  <span>Address {{i + 1}}</span><br>
+                  <span *ngIf="userform.controls.addresses.controls.length > 1">                                                
+                      
+                      <a class="btn btn-danger" (click)="removeAddress(i)">Remove address</a>
+                  </span>
+                </div>
+              <!-- </nz-form-label> -->
+  
+          <div [formGroupName]="i">
+            <nz-form-item> 
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="zip" nzRequired>
+                    <span>
+                    Street
+                    </span>
+                  </nz-form-label>     
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nzSize="large" nz-input type="text" id="street"type="text" formControlName="street" />
+                <nz-form-explain *ngIf="userform.controls.addresses.controls[i].controls.street.touched&&!userform.controls.addresses.controls[i].controls.street.valid">
+                <!-- *ngIf="userform.get('street')?.dirty && userform.get('street')?.errors" -->
+                  Please input your street name!</nz-form-explain
+                >
+              </nz-form-control>
+            </nz-form-item>
+      
+            <nz-form-item>
+              <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="zip" nzRequired>
+                <span>
+                  Zip 
+                </span>
+              </nz-form-label>
+              <nz-form-control [nzSm]="14" [nzXs]="24">
+                <!-- <input nzSize="large" nz-input id="zip" type="text" formControlName="zip" /> -->
+                <!-- <nz-form-explain *ngIf="userform.get('zip')?.dirty && userform.get('zip')?.errors"> -->
+                    <input nzSize="large" nz-input id="zip" type="text" formControlName="postcode" />              
+                  <nz-form-explain *ngIf="userform.controls.addresses.controls[i].controls.postcode.touched&&!userform.controls.addresses.controls[i].controls.postcode.valid"> 
+                  Please input your zip code!</nz-form-explain
+                >
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+  
+          </div>
+          <div><a class="btn btn-primary" (click)="addAddress()">Add address</a></div>
+        </div>
+
+
+
+
+
+      
+      <!-- <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <button nz-button nzType="primary" [disabled]="!userform.valid">Submit</button>
+          <button nz-button (click)="resetForm($event)">Reset</button>
+        </nz-form-control>
+      </nz-form-item> -->
+      <ng-template #footerTemplateS>
+        <!-- <button *ngIf="isVisible" nz-button (click)="submitForm(userform.value)" nzType="primary">Submit</button> -->
+        <button nz-button (click)="resetForm($event)">Reset</button>
+      </ng-template>
+    </form>
+  </div> 
+    
+    <!-- <div class="span3 well">
+      <legend>Change Details</legend>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform)" accept-charset="UTF-8"  >
+     <div class="container">
+       <div class="row">
+         <col-2> ->
+        <input formControlName="FirstName" class="span3" name="name"  type="text">          
+       </col-2> ->
+       </div>
+     </div>
+      
+    <input formControlName="LastName" class="span3" name="name"  type="text">         
+    <input class="span3" formControlName="Email"  type="email">
+    <div formGroupName="address">
+        <input  class="span3" formControlName="street"  type="text"> 
+        <input  class="span3" formControlName="zip"  type="text">                 
+    </div>
+        <input type="hidden" class="span3" formControlName="pass"  type="password"> 
+        <input type="hidden" class="span3" formControlName="rpass"  type="password"> 
+         <button (onclick)="onUpdate()" class="btn btn-warning" type="submit">Change</button> ->
+        <button  class="btn btn-warning" type="submit">Change</button>        
+      </form> -->
+  <!-- </div> -->
+  
+  
+  
+  </nz-modal>
+
+  <nz-modal nzWidth="60%" [(nzVisible)]="isVisibleP" nzTitle="Update Details" [nzFooter]="footerTemplate" (nzOnCancel)="handleCancelP()" >
+  
+    <div>
+      <form nz-form [formGroup]="changeP" (ngSubmit)="change(changeP.value)">
+       
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24"  nzRequired>Old Password</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24"  nzHasFeedback>
+            <input nzSize="large" nz-input formControlName="OldPass" placeholder="Type your old password" type="password" />
+            <nz-form-explain *ngIf="changeP.get('OldPass')?.dirty&& changeP.get('NewPass')?.errors">
+              <span *ngIf="changeP.get('OldPass')?.hasError('notMatch')" class="err-msg" >Wrong Old Password Entered!</span>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24"  nzRequired>New Password</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24"  nzHasFeedback>
+            <input nzSize="large" nz-input formControlName="NewPass" placeholder="Type your new password" type="password" />
+            <nz-form-explain *ngIf="changeP.get('NewPass')?.dirty && changeP.get('NewPass')?.errors">
+              <span *ngIf="changeP.get('NewPass')?.hasError('required')">
+                New Password Required!
+              </span>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24"  nzRequired>Repeat New Password</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24"  nzHasFeedback>
+            <input nzSize="large" nz-input formControlName="NewRPass" placeholder="Repeat your new password" type="password" />
+            <nz-form-explain *ngIf="changeP.get('NewPass')?.dirty &&  changeP.get('NewPass')?.errors">
+              <span class="err-msg" *ngIf="changeP.get('NewRPass')?.hasError('confirm')">Password and confirm password not matching</span>
+                  
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+      
+    
+        <!-- </div> -->
+        
+        <!-- <nz-form-item>
+          <nz-form-control [nzOffset]="7" [nzSpan]="12">
+            <button nz-button nzType="primary" [disabled]="!userform.valid">Submit</button>
+            <button nz-button (click)="resetForm($event)">Reset</button>
+          </nz-form-control>
+        </nz-form-item> -->
+        <ng-template #footerTemplate>
+          <button *ngIf="isVisible" nz-button (click)="submitForm(userform.value)" [disabled]="!userform.valid" nzType="primary">Submit</button>
+          <button *ngIf="isVisibleP" nz-button (click)="change(changeP.value)" nzType="primary" [disabled]="!changeP.valid">Change</button>
+          <button nz-button (click)="resetForm($event)">Reset</button>
+        </ng-template>
+      </form>
+    </div> 
+      
+     
+    
+    </nz-modal>

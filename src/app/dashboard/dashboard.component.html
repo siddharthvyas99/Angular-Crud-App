@@ -1,0 +1,69 @@
+<h2 style="text-align: center;margin:40px 0px 60px 0px">Hello {{det1.FirstName}}</h2>
+<button style="position:absolute;right:90px;top:20px" (click)="logout()" class="btn btn-danger">Logout</button>
+
+<div style="margin-bottom:50px" class="container">
+  <div class="row">
+    <div class="col">
+      <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <ul class="navbar-nav">
+          <li class="nav-item" [ngClass]="isProfileInfoactiveLink ? 'active' : '' ">
+            <a class="nav-link" (click)="showInfo()" >Profile Info</a>
+          </li>
+          <li class="nav-item" [ngClass]="!isProfileInfoactiveLink ? 'active' : '' ">
+            <a class="nav-link" (click)="showProfile()" >Profile Edit</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<div *ngIf="showUser" class="container" >
+   <div class="row">
+     <div class="col"><h3 style="font-size: 24px">Full Name :</h3></div>
+     <div class="col"><h4>{{det1.FirstName}} {{det1.LastName}}</h4></div>
+   </div>             
+  <div class="row">
+    <div class="col"><h3>Email :</h3></div>
+    <div class="col"><h4>{{det1.Email}}</h4></div>
+  </div>
+   <!-- <div class="row">
+     <div class="col"><h3>Address->Street :</h3></div>
+     <div class="col"><h4>{{det1.address.street}}</h4></div>
+   </div>
+  <div class="row">
+    <div class="col"><h3>Address->Zip :</h3></div>
+    <div class="col"><h4> {{det1.address.zip}}</h4></div>
+  </div> -->
+  <!-- <div *ngIf="det1.addresses.length"></div> -->
+  <div *ngFor="let add of det1.addresses;let i=index">
+    <div class="row">
+      <div class="col">
+        <h3>Address {{i+1}}</h3>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col"><h3>Street :</h3></div>
+     <div class="col"><h4>{{add.street}}</h4></div>
+    </div>
+  <div class="row">
+    <div class="col"><h3>Zip :</h3></div>
+    <div class="col"><h4> {{add.postcode}}</h4></div>
+  </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="isAdmin" >
+  
+  <app-admin></app-admin>
+
+</div>
+
+
+
+
+

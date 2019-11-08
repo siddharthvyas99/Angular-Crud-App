@@ -1,0 +1,187 @@
+
+
+    <!-- <div [ngClass]="'main'">
+
+        <section [ngClass]="'signup'" [ngStyle]="{ 'background-image': 'url('+signbgpic+')'}">
+         
+            <div [ngClass]="'container'" >
+                <div [ngClass]="'signup-content'">
+                    <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)" [ngClass]="'signup-form'">
+                        <h2 [ngClass]="'form-title'">Create account</h2>
+                        <div  [ngClass]="'form-group'">
+                            <input formControlName="FirstName" type="text" [ngClass]="'form-input'"  placeholder="Your First Name"/>
+                            <span  class="err-msg" *ngIf="!signupForm.get('FirstName').valid&&signupForm.get('FirstName').touched">First name required</span>
+
+                            
+                        </div>
+                        <div [ngClass]="'form-group'">
+                          <input formControlName="LastName" type="text" [ngClass]="'form-input'"  placeholder="Your Last Name"/>
+                          <span class="err-msg" *ngIf="!signupForm.get('LastName').valid&&signupForm.get('LastName').touched">Last name required</span>                          
+                          
+                      </div>
+                        <div [ngClass]="'form-group'">
+                            <input formControlName="Email" type="email" [ngClass]="'form-input'" placeholder="Your Email"/>
+                            <span class="err-msg" *ngIf="!signupForm.get('Email').valid&&signupForm.get('Email').touched">Please
+                                    enter valid email!</span>
+                        </div>
+                        <div [ngClass]="'form-group'">
+                            <input formControlName="pass" type="password" [ngClass]="'form-input'" placeholder="Password"/>
+                            <span toggle="#password" [ngClass]="['zmdi', 'zmdi-eye', 'field-icon', 'toggle-password']"></span>
+               <span class="err-msg" *ngIf="!signupForm.get('pass').valid&&signupForm.get('pass').touched">Please enter the password</span>
+
+                        </div>
+                        <div [ngClass]="'form-group'">
+                            <input formControlName="rpass" type="password" [ngClass]="'form-input'"  placeholder="Repeat your password"/>
+                            <span class="err-msg" *ngIf="checkPassword(signupForm)">Password and confirm password not matching</span>
+                            
+                        </div>
+                        
+                        <div formGroupName="address">
+                            <div [ngClass]="'form-group'">
+                              <input  formControlName="street"  type="text" [ngClass]="'form-input'"  placeholder="Your address"/>
+                        <span class="err-msg" *ngIf="!signupForm.get('address').get('street').valid&&signupForm.get('address').get('street').touched">Street name required</span>
+
+                          </div>
+
+                            <div [ngClass]="'form-group'">
+                              <input formControlName="zip"  type="text" [ngClass]="'form-input'"  placeholder="Your zipcode"/>
+                        <span class="err-msg" *ngIf="!signupForm.get('address').get('zip').valid&&signupForm.get('address').get('zip').touched">Street name required</span>
+
+                          </div>
+                          
+                        </div>
+
+                        <div [ngClass]="'form-group'">
+                           
+                            <button type="submit" [disabled]="signupForm.invalid" [ngClass]="'form-submit'">Sign up</button>
+
+                        </div>
+                    </form>
+                    <p [ngClass]="'loginhere'">
+                        Have already an account ? <a href="/login" [ngClass]="'loginhere-link'">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>  -->
+
+
+    
+
+    <div class="main">
+
+        <section class="signup" [ngStyle]="{ 'background-image': 'url('+signbgpic+')'}">
+                
+                <div class="container" >
+                    <div class="signup-content">
+                        <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)" class="'signup-form'">
+                            <h2 class="form-title">Create account</h2>
+                            <div  class="form-group">
+                                <input formControlName="FirstName" type="text" class="form-input"  placeholder="Your First Name"/>
+                                <span  class="err-msg" *ngIf="!signupForm.get('FirstName').valid&&signupForm.get('FirstName').touched">First name required</span>
+    
+                                
+                            </div>
+                            <div class="form-group">
+                              <input formControlName="LastName" type="text" class="form-input"  placeholder="Your Last Name"/>
+                              <span class="err-msg" *ngIf="!signupForm.get('LastName').valid&&signupForm.get('LastName').touched">Last name required</span>                          
+                          
+                          </div>
+                            <div class="form-group">
+                                <input formControlName="Email" type="email" class="form-input" placeholder="Your Email"/>
+                                <span class="err-msg" *ngIf="!signupForm.get('Email').valid&&signupForm.get('Email').touched">Please
+                                        enter valid email!</span>
+                            </div>
+                            <div class="form-group">
+                                <input formControlName="pass" type="password" class="form-input" placeholder="Password"/>
+                                <span toggle="#password" class="['zmdi', 'zmdi-eye', 'field-icon', 'toggle-password']"></span>
+                   <span class="err-msg" *ngIf="!signupForm.get('pass').valid&&signupForm.get('pass').touched">Please enter the password</span>
+    
+                            </div>
+                            <div class="form-group">
+                                <input formControlName="rpass" type="password" class="form-input"  placeholder="Repeat your password"/>
+                                <span class="err-msg" *ngIf="checkPassword(signupForm)">Password and confirm password not matching</span>
+                                
+                            </div>
+                            
+                            <!-- <div formGroupName="address">
+                                <div class="form-group">
+                                  <input  formControlName="street"  type="text" class="form-input"  placeholder="Your address"/>
+                            <span class="err-msg" *ngIf="!signupForm.get('address').get('street').valid&&signupForm.get('address').get('street').touched">Street name required</span>
+    
+                              </div>
+    
+                                <div class="form-group">
+                                  <input formControlName="zip"  type="text" class="form-input"  placeholder="Your zipcode"/>
+                            <span class="err-msg" *ngIf="!signupForm.get('address').get('zip').valid&&signupForm.get('address').get('zip').touched">Street name required</span>
+    
+                              </div>
+                             
+                            </div> -->
+
+                            <div class="form-group">
+                                    <div formArrayName="addresses">
+                                            <div *ngFor="let address of signupForm.controls.addresses.controls; let i=index">
+                                                <!-- address header, show remove button when more than one address available -->
+                                                <div>
+                                                    <span>Address {{i + 1}}</span>
+                                                    <span *ngIf="signupForm.controls.addresses.controls.length > 1">                                                
+                                                        
+                                                        <a class="btn btn-danger" (click)="removeAddress(i)">Remove address</a>
+                                                    </span>
+                                                </div>
+                                    
+                                                <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                                                <div [formGroupName]="i">
+                                                    <!--street-->
+                                                    <div class="form-group">
+                                                        <!-- <label>street</label> -->
+                                                        <input class="form-input" type="text" formControlName="street" placeholder="Enter Street Name">
+                                                        <!--display error message if street is not valid-->
+                                                        <span *ngIf="signupForm.controls.addresses.controls[i].controls.street.touched&&!signupForm.controls.addresses.controls[i].controls.street.valid">
+                                                            Street is required
+                                                        </span>
+                                                    </div>
+                                                    <!--postcode-->
+                                                    <div class="form-group">
+                                                        <!-- <label>postcode</label> -->
+                                                        <input class="form-input" type="text" formControlName="postcode" placeholder="Enter zipcode here">
+                                                        <span *ngIf="signupForm.controls.addresses.controls[i].controls.postcode.touched&&!signupForm.controls.addresses.controls[i].controls.postcode.valid">
+                                                            Zipcode is required
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div><a class="btn btn-primary" (click)="addAddress()">Add address</a></div>
+                                    </div>
+                                        
+                            </div>
+
+                           
+
+
+    
+                            <div class="form-group">
+                                
+                                <button type="submit" [disabled]="signupForm.invalid" class="form-submit">Sign up</button>
+    
+                            </div>
+                        </form>
+                        <p class="loginhere">
+                            Have already an account ? <a routerLink="/login" class="loginhere-link">Login here</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+    
+        </div>
+    
+        
+    
+      
+    
+
+    
+
+  

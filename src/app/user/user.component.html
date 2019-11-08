@@ -1,0 +1,90 @@
+
+
+    
+    <div class="span3 well">
+      <legend>Change Details</legend>
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform)" accept-charset="UTF-8"  >
+		<input formControlName="FirstName" class="span3" name="name"  type="text"> 
+		<input formControlName="LastName" class="span3" name="name"  type="text">         
+    <input class="span3" formControlName="Email"  type="email">
+    <div formGroupName="address">
+        <input  class="span3" formControlName="street"  type="text"> 
+        <input  class="span3" formControlName="zip"  type="text">                 
+    </div>
+        <input [hidden]="true" class="span3" formControlName="pass"  type="password"> 
+        <input [hidden]="true" class="span3" formControlName="rpass"  type="password"> 
+        <!-- <button (onclick)="onUpdate()" class="btn btn-warning" type="submit">Change</button> -->
+        <button  class="btn btn-warning" type="submit">Change</button>        
+      </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form [formGroup]="userform" (ngSubmit)="onSubmit(userform)" class="normal-form">
+    <mat-grid-list cols="2" rowHeight="300px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="$key">
+          <mat-form-field>
+            <input matInput formControlName="FirstName"  placeholder="First Name">
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput formControlName="LastName"  placeholder="Last Name*">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="Email" placeholder="Email">
+            <mat-error>Invalid email address.</mat-error>
+          </mat-form-field>
+          <div formGroupName="address">
+              <mat-form-field>
+                  <input matInput formControlName="street" placeholder="Street">
+                  <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="zip"  placeholder="Zip">
+                    <mat-error>This field is mandatory.</mat-error>
+                  </mat-form-field>
+
+          </div>
+          <mat-form-field>
+            <input  type="hidden" formControlName="pass"  placeholder="pass">
+            <mat-error>Invalid password.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="hidden" formControlName="rpass"  placeholder="rpass">
+            <mat-error>Invalid email address.</mat-error>
+          </mat-form-field>
+                </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controles-container">
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" >Submit</button>
+                    
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form> -->

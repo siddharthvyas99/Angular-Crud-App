@@ -1,0 +1,124 @@
+<!-- <div>
+	<div [ngClass]="'container-login100'">
+		<div [ngClass]="'wrap-login100'">
+			<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" [ngClass]="'login100-form'">
+				
+				<span [ngClass]="['login100-form-title', 'p-b-34']">
+					Account Login
+				</span><br><br><br> -->
+
+				<!-- <div class="msg"><span *ngIf="!loginForm.get('Email').valid&&loginForm.get('Email').touched">Please
+					enter valid username!</span>
+				<span *ngIf="!loginForm.get('password').valid&&loginForm.get('password').touched">Please enter valid username!</span>
+				</div> -->
+			
+				<!-- <div  [ngClass]="['wrap-input100', 'rs1-wrap-input100', 'validate-input', 'm-b-20']"
+					>
+					<input formControlName="Email"  type="email" placeholder="User name">
+					<span [ngClass]="'focus-input100'"></span>
+					<span *ngIf="!loginForm.get('Email').valid&&loginForm.get('Email').touched">Please enter username!</span>
+				</div>
+				<div [ngClass]="['wrap-input100', 'rs2-wrap-input100', 'validate-input m-b-20']"
+					data-validate="Type password">
+					<input formControlName="pass"  type="password" placeholder="Password">
+					<span [ngClass]="'focus-input100'"></span>
+					<span *ngIf="!loginForm.get('pass').valid&&loginForm.get('pass').touched">Please enter password!</span>
+				</div>
+				<div class="err-msg" *ngIf="!EmailPresent">Please register your email!!</div>
+				<div class="err-msg" *ngIf="WrongPass">Wrong Password</div>
+			
+				<div [ngClass]="'container-login100-form-btn'">
+					<button type="submit"  [ngClass]="'login100-form-btn'">
+						Sign in
+					</button>
+				</div>
+
+				<div [ngClass]="'w-full text-center p-t-27 p-b-239'">
+					<span [ngClass]="'txt1'">
+						Forgot
+					</span>
+
+					<a href="#" [ngClass]="'txt2'">
+						User name / password?
+					</a>
+				</div>
+
+				<div [ngClass]="['w-full', 'text-center']">
+					<a href="/signup" [ngClass]="'txt3'">
+						Sign Up
+					</a>
+				</div> -->
+				<!-- <span class="msg"><span *ngIf="!loginForm.get('logindata.Email').valid&&loginForm.get('logindata.Email').touched">Please
+					enter valid username!</span>
+				<span *ngIf="!loginForm.get('logindata.password').valid&&loginForm.get('logindata.password').touched">Please enter valid username!</span>
+				</span> -->
+				<!-- </div> -->
+			<!-- </form>
+            
+			<div [ngClass]="'login100-more'" [style.background-image]="'url('+photo+')'"></div>
+		</div>
+	</div>
+</div> -->
+
+<div style="margin:0px !important;border:100px solid rgb(244,244,244) " class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<!-- <div [style.background-image]="'url('+photo+')'"> -->
+            <img class="img-fluid" src="assets/bg-01.jpg" alt="">
+			
+		   </div>
+		
+		<div class="col">
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" >
+			<!-- <div [formGroupName]="logindata" > -->
+			<div style="margin:20px 20px 80px 20px">
+				<h1 style="text-align: center">Account Login</h1>
+			</div>	
+	
+		<div style="margin:300px 20px 10px 40px">
+				<div class="form-group input-group mb-3 input-group-lg">
+					<input class="form-control" formControlName="Email"  type="email" placeholder="User name">
+					<span class="focus-input100"></span>
+					<span *ngIf="!loginForm.get('Email').valid&&loginForm.get('Email').touched">Please enter username!</span>
+				</div><br><br>
+				<div class="form-group input-group mb-3 input-group-lg">
+					<input class="form-control " formControlName="pass"  type="password" placeholder="Password">
+					<span class="focus-input100"></span>
+					<span *ngIf="!loginForm.get('pass').valid&&loginForm.get('pass').touched">Please enter password!</span>
+				</div><br><br>
+				<div class="err-msg" *ngIf="!EmailPresent">Please register your email!!</div>
+				<div class="err-msg" *ngIf="WrongPass">Wrong Password</div>
+			
+			<div >
+				<button type="submit"  style="font-size: 20px"  class="login100-form-btn">
+					Sign in
+				</button>
+			</div><br>
+	
+			<!-- <div >
+				<span >
+					Forgot
+				</span>
+	
+				<a href="#" >
+					User name / password?
+				</a>
+			</div><br><br> -->
+	
+			<div >
+				<a style="font-size: 20px;color: chartreuse" routerLink="/signup" >
+					Sign Up
+				</a>
+			</div>
+		</div>
+			
+		</form>
+	   </div>
+       
+	</div>
+</div>
+
+
+
+
+<div id="dropDownSelect1"></div>
